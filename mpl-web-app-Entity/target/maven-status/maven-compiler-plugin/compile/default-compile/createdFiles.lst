@@ -1,0 +1,5 @@
+Entity\SaleDetail.class
+Entity\Persona.class
+Entity\Sale.class
+Entity\User.class
+Entity\Product.class
