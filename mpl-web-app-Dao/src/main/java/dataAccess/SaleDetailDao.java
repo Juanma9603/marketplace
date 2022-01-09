@@ -24,17 +24,18 @@ public class SaleDetailDao {
     }
 
 
-    public boolean Registrar(SaleDetail objSaleDetail){
+    public boolean Registrar(SaleDetail objSaleDetail,String idSale){
         try {
-            CallableStatement stm=con.Conectar().prepareCall("{CALL sp_saledetailregister(?,?,?)}");
+            CallableStatement stm=con.Conectar().prepareCall("{CALL sp_saledetailregister(?,?,?,?)}");
             stm.setInt(1,objSaleDetail.getObjProduct().getID());
             stm.setInt(2,objSaleDetail.getUnits());
             stm.setDouble(3,objSaleDetail.getUnitPrice());
+            stm.setString(4,idSale);
             stm.executeUpdate();
         }catch (SQLException e){
             logger.error("error sp_Saledetailregistrar"+e);
         }catch (Exception er){
-            logger.error("error al ingresas un objSaleDetail"+er);
+            logger.error("error al ingresar un objSaleDetail"+er);
         }
         return true;
     }

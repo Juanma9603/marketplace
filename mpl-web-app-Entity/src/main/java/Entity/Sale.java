@@ -13,15 +13,21 @@ public class Sale {
     private ArrayList<SaleDetail> listSaleDetails;
 
     public Sale(){
-        this(0,new Persona(), new Date(),18.5,false, new ArrayList<SaleDetail>());
+        this.idSale=0;
+        this.objpersona= new Persona();
+        this.registerDatetime= new Date();
+        this.igv=18.5;
+        this.status = false;
+        this.listSaleDetails=new ArrayList<SaleDetail>();
     }
 
-    public Sale(int idSale,Persona objpersona, Date registerDatetime,double igv, Boolean status, new ArrayList<SaleDetail>()){
+    public Sale(int idSale,Persona objpersona, Date registerDatetime,double igv, Boolean status, ArrayList<SaleDetail> listSaleDetails){
         this.idSale=idSale;
         this.objpersona=objpersona;
         this.registerDatetime=registerDatetime;
         this.igv=igv;
         this.status=status;
+        this.listSaleDetails = listSaleDetails;
     }
 
     public int getIdSale() {
@@ -70,6 +76,14 @@ public class Sale {
 
     public void setIgv(double igv) {
         this.igv = igv;
+    }
+
+    public ArrayList<SaleDetail> getListSaleDetails() {
+        return listSaleDetails;
+    }
+
+    public void setListSaleDetails(ArrayList<SaleDetail> listSaleDetails) {
+        this.listSaleDetails = listSaleDetails;
     }
 
     @Override

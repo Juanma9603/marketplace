@@ -2,3 +2,4 @@ dataAccess\ProductDao.class
 dataAccess\UserDao.class
 Connect\Conexion.class
 dataAccess\SaleDao.class
+dataAccess\SaleDetailDao.class

@@ -27,6 +27,9 @@ public class sConfirmSale extends HttpServlet {
             HttpSession session=request.getSession();
             if (session.getAttribute("listCarshopping")!=null && session.getAttribute("SaleHeader")!=null){
                 SaleDao.getInstance().Registrar((Sale) session.getAttribute("SaleHeader"));
+                response.sendRedirect("Sale/SuccessSale.jsp");
+            }else {
+                response.sendRedirect("/sCarShopping");
             }
 
         }catch (Exception e){
@@ -41,21 +44,17 @@ public class sConfirmSale extends HttpServlet {
         if (session.getAttribute("listCarshopping")!=null && session.getAttribute("objPersona")!=null){
             ArrayList<SaleDetail> saleDetails=(ArrayList<SaleDetail>) session.getAttribute("listCarshopping");
 
-            double itotal=0;
+            double total=0;
             for (SaleDetail saleDetail:saleDetails){
                 saleDetail.setSubTotal(saleDetail.getUnits()*saleDetail.getUnitPrice());
-                itotal+=saleDetail.getSubTotal();
+                total+=saleDetail.getSubTotal();
             }
-            session.setAttribute("listCarshopping",saleDetails);
-            Sale objSale =new Sale();
-            itotal=(((itotal*objSale.getIgv())/100)+itotal);
-            BigDecimal iitotal=new BigDecimal(itotal);
-            BigDecimal Total=iitotal.setScale(2, RoundingMode.HALF_DOWN);
-            double total=Double.parseDouble(Total.toString());
-            objSale.setObjpersona((Persona) session.getAttribute("objPersona"));
-            objSale.setTotal(total);
-            objSale.setRegisterDatetime(new Date());
 
+            Sale objSale =new Sale();
+            objSale.setObjpersona((Persona) session.getAttribute("objPersona"));
+            objSale.setTotal(((total*objSale.getIgv())/100)+total);
+            objSale.setRegisterDatetime(new Date());
+            objSale.setListSaleDetails(saleDetails);
             session.setAttribute("SaleHeader",objSale);
         }
         response.sendRedirect("Sale/ConfirmSale.jsp");

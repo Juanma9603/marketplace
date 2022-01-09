@@ -23,9 +23,9 @@
 
                 Persona objPersona=(Persona) session.getAttribute("objpersona");
                 if (session.getAttribute("objPersona")!=null){
-                ArrayList<SaleDetail> listshoppingCar=(ArrayList<SaleDetail>)session.getAttribute("listCarshopping");
+                /*ArrayList<SaleDetail> listshoppingCar=(ArrayList<SaleDetail>)session.getAttribute("listCarshopping");*/
                 Sale objSale= (Sale) session.getAttribute("SaleHeader");
-                if (listshoppingCar==null || objSale==null){
+                if (objSale==null){
                         response.sendRedirect("../sCarShopping");
                 }
             %>
@@ -54,7 +54,7 @@
                 </thead>
                 <tbody>
                 <%
-                    for (SaleDetail saleDetail:listshoppingCar){
+                    for (SaleDetail saleDetail:objSale.getListSaleDetails()){
                 %>
                 <tr>
                     <th scope="row"><%=saleDetail.getObjProduct().getID()%></th>
@@ -87,7 +87,7 @@
                         <div class="modal-footer">
                             <a href="../sCarShopping" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</a>
                             <form method="post" action="../sConfirmSale">
-                                <a  type="submit" class="btn btn-primary">Confirmar</a>
+                                <button  type="submit" class="btn btn-primary">Confirmar</button>
                             </form>
                         </div>
                     </div>
