@@ -96,7 +96,7 @@
 
             <%
                 }else{
-                    response.sendRedirect("../Login/LoginPage.jsp");
+                    response.sendRedirect("./index.jsp");
                 }
             %>
         </div>

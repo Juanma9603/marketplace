@@ -21,10 +21,7 @@
             objPersona =(Persona) session1.getAttribute("objpersona");
             /*int idpersona=objPersona.getID();
             session1.setAttribute("idpersona",idpersona);*/
-            session1.removeAttribute("objpersona");
-        }else {
-            response.sendRedirect("LoginPage.jsp");
-        }
+
     %>
     <div class="container my-4">
         <h2>Perfil User</h2>
@@ -60,6 +57,11 @@
         </form>
 
     </div>
+<%
 
+    }else {
+        response.sendRedirect("./index.jsp");
+    }
+%>
 </body>
 </html>

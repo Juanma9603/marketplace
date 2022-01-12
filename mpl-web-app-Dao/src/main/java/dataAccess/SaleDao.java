@@ -47,7 +47,7 @@ public class SaleDao {
         }catch (Exception e){
             logger.error("error registrar"+e);
         }
-
+        logger.info("se registro compra finalizada");
         return true;
     }
 }

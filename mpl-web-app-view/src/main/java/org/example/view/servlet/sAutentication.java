@@ -35,19 +35,26 @@ public class sAutentication extends HttpServlet {
                 response.sendRedirect("Login/PerfilLogin.jsp");
             }else {
                 logger.info("password vacio");
-                response.sendRedirect("Login/LoginPage.jsp");
+                response.sendRedirect("./index.jsp");
             }
         }else {
 
-            response.sendRedirect("Login/LoginPage.jsp");
+            response.sendRedirect("./index.jsp");
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("type").equals("logout")){
-            HttpSession session=request.getSession();
-            session.removeAttribute("objPersona");
+        HttpSession session=request.getSession();
+        if (request.getParameter("type")!=null){
+            if (request.getParameter("type").equals("logout")){
+                session.removeAttribute("objPersona");
+            }
+        }else {
+            if (session.getAttribute("objPersona")!=null){
+                response.sendRedirect("Store/ListProductos.jsp");
+            }else {
+                response.sendRedirect("./index.jsp");
+            }
         }
-        response.sendRedirect("Login/LoginPage.jsp");
     }
 }

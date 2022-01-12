@@ -27,19 +27,22 @@ public class sConfirmSale extends HttpServlet {
             HttpSession session=request.getSession();
             if (session.getAttribute("listCarshopping")!=null && session.getAttribute("SaleHeader")!=null){
                 SaleDao.getInstance().Registrar((Sale) session.getAttribute("SaleHeader"));
+                logger.info("compra culminada");
                 response.sendRedirect("Sale/SuccessSale.jsp");
             }else {
+                logger.info("volviendo al carrito");
                 response.sendRedirect("/sCarShopping");
             }
 
         }catch (Exception e){
-            logger.error("error al form de confirmar"+e);
+            logger.error("error en el form de confirmar "+e);
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     try {
 
+        logger.info("ingresando atributos de compra");
         HttpSession session=request.getSession();
         if (session.getAttribute("listCarshopping")!=null && session.getAttribute("objPersona")!=null){
             ArrayList<SaleDetail> saleDetails=(ArrayList<SaleDetail>) session.getAttribute("listCarshopping");
@@ -58,6 +61,7 @@ public class sConfirmSale extends HttpServlet {
             session.setAttribute("SaleHeader",objSale);
         }
         response.sendRedirect("Sale/ConfirmSale.jsp");
+        logger.info("datos de compra guardados");
     }catch (Exception e){
         logger.info("sConfirmSale error"+e);
     }

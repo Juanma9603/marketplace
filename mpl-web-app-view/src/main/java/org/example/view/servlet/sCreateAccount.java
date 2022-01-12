@@ -47,7 +47,7 @@ public class sCreateAccount extends HttpServlet {
                 UserDao.getInstance().Registrar(objpersona);
                 logger.info("Cuenta Creada");
             }
-            response.sendRedirect("Login/LoginPage.jsp");
+            response.sendRedirect("./index.jsp");
         }catch (Exception e){
             logger.error("error al crear usuario");
             response.sendRedirect("ErrorPage.jsp");

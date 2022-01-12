@@ -22,6 +22,7 @@
         response.sendRedirect("../Errorpage.jsp");
     }
 %>
+<jsp:include page="../includes/navbar.jsp"/>
     <div class="container">
         <h2>Lista de Productos</h2>
         <a href="../Login/PerfilLogin.jsp" class="btn btn-primary">Volver al Perfil</a>
