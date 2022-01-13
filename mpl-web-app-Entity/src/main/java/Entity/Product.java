@@ -33,6 +33,7 @@ public class Product {
         this.timestamp_update = timestamp_update;
     }
 
+
     public int getID() {
         return ID;
     }

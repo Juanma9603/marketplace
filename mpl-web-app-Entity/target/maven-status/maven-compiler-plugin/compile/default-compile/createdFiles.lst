@@ -1,4 +1,5 @@
 Entity\SaleDetail.class
+dto\Orders.class
 Entity\Persona.class
 Entity\Sale.class
 Entity\User.class

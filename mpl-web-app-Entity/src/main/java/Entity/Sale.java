@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Sale {
-    private int idSale;
+    private String idSale;
     private Persona objpersona;
     private Date registerDatetime;
     private double igv;
@@ -13,7 +13,7 @@ public class Sale {
     private ArrayList<SaleDetail> listSaleDetails;
 
     public Sale(){
-        this.idSale=0;
+        this.idSale="";
         this.objpersona= new Persona();
         this.registerDatetime= new Date();
         this.igv=18.5;
@@ -21,7 +21,7 @@ public class Sale {
         this.listSaleDetails=new ArrayList<SaleDetail>();
     }
 
-    public Sale(int idSale,Persona objpersona, Date registerDatetime,double igv, Boolean status, ArrayList<SaleDetail> listSaleDetails){
+    public Sale(String idSale,Persona objpersona, Date registerDatetime,double igv, Boolean status, ArrayList<SaleDetail> listSaleDetails){
         this.idSale=idSale;
         this.objpersona=objpersona;
         this.registerDatetime=registerDatetime;
@@ -30,11 +30,11 @@ public class Sale {
         this.listSaleDetails = listSaleDetails;
     }
 
-    public int getIdSale() {
+    public String getIdSale() {
         return idSale;
     }
 
-    public void setIdSale(int idSale) {
+    public void setIdSale(String idSale) {
         this.idSale = idSale;
     }
 

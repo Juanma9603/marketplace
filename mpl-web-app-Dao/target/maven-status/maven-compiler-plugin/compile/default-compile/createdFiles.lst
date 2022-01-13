@@ -1,5 +1,6 @@
+Sales\SaleDao.class
+Sales\OrderDao.class
 dataAccess\ProductDao.class
+Sales\SaleDetailDao.class
 dataAccess\UserDao.class
 Connect\Conexion.class
-dataAccess\SaleDao.class
-dataAccess\SaleDetailDao.class

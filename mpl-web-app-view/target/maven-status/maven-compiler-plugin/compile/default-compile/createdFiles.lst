@@ -1,6 +1,7 @@
-org\example\view\servlet\sStoreProducts.class
-org\example\view\servlet\sCarShopping.class
+org\example\view\servlet\sOrdersDetail.class
 org\example\view\servlet\sAutentication.class
 org\example\view\servlet\sConfirmSale.class
+org\example\view\servlet\sStoreProducts.class
+org\example\view\servlet\sCarShopping.class
 org\example\view\servlet\sCreateAccount.class
 org\example\view\servlet\sOrders.class
