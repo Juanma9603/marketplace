@@ -1,0 +1,139 @@
+CAMBIAR TABLA
+ALTER TABLE `biblioteca`.`usuario` 
+DROP FOREIGN KEY `usuario_ibfk_1`;
+ALTER TABLE `biblioteca`.`usuario` 
+CHANGE COLUMN `Id_Persona` `Id_Persona` INT NOT NULL ,
+CHANGE COLUMN `Email` `Email` VARCHAR(45) NOT NULL ,
+CHANGE COLUMN `Nickname` `Nickname` VARCHAR(45) NOT NULL ,
+CHANGE COLUMN `Contraseña` `Contraseña` VARCHAR(45) NOT NULL ;
+ALTER TABLE `biblioteca`.`usuario` 
+ADD CONSTRAINT `usuario_ibfk_1`
+  FOREIGN KEY (`Id_Persona`)
+  REFERENCES `biblioteca`.`persona` (`Id_Persona`);
+
+
+
+
+/* CREACION DE LA TABLA Usuario
+
+use login;
+CREATE TABLE Usuario 
+(Id_usuario integer auto_increment not null,
+Id_persona integer,
+Email varchar(30),
+Password_usuario  varchar(50),
+primary key (Id_usuario),
+foreign key (Id_persona) references persousuariousuariousuariona (Id_persona)
+)
+;
+
+
+CREATE TABLE Persona  (
+    Id_persona int(7) auto_increment primary key not null, 
+    Firstname varchar(20) not null, 
+    Lastname varchar(20) not null, 
+    years_old int(3) not null, 
+    Gender varchar(2) not null, 
+    Email varchar(30), 
+    Direccion varchar(50), 
+    Using_date timestamp)
+
+
+
+CONSULTA
+SELECT Id, Id_producto_almacen, Marca, Nombre, Cantidad, Precio FROM producto WHERE Id=? AND Estado='1';
+
+INSERTAR de datos a la TABLA
+use login;
+insert into persona (Firstname, Lastname, years_old, Gender, Email, Direccion) 
+values ('Andre', 'Cieza', '25', 'F', 'andza4152@hotmail.com', 'avenida huaman 111')
+;
+insert into persona (Firstname, Lastname, years_old, Gender, Email, Direccion) 
+values ('Andre', 'Cieza', '25', 'F', 'andza4152@hotmail.com', 'avenida huaman 111')
+;
+
+
+Seleccion en la TABLA
+use login;
+select Firstname from persona where Gender ='M'
+;
+use login;
+select Id_persona from persona where Gender ='M'
+;
+
+use login;
+
+select Firstname,Lastname from persona;
+
+use login;
+select Firstname,Lastname from persona where Id_persona ='123123';
+
+
+MODIFICAR o ACTUALIZAR
+use login;
+update persona set Firstname='Andrea' where Id_persona ='6';
+
+use login;
+update persona set Firstname='Marlene', 
+Email='marlenita541@hotmail.com', 
+years_old='28',
+Direccion='Las casuarinas 514' where Id_persona ='6';
+
+UPDATE producto SET Estado = '0'  WHERE Id = ?;
+
+
+DELETE
+use login;
+delete from persona where years_old>25;
+
+
+
+use ventas;
+Create table Producto (Id integer auto_increment not null,
+Id_producto_almacen int not null,
+Marca varchar(20) not null,
+Nombre varchar(20) not null,
+Cantidad double not null,
+Precio double not null,
+Estado int(1) default ('1'), 
+primary key (Id)
+);
+
+
+
+
+
+
+
+use registro;
+CREATE TABLE persona (
+Id int auto_increment not null,
+Dni int(7) not null,
+Firstname varchar(20) not null,
+Lastname varchar(20) not null,
+Gender varchar(20) not null,
+Email varchar(20) not null,
+Years_old int(3) not null,
+Estado int(1) default ('1'),
+primary key (Id))
+;
+
+
+use registro;
+SELECT Id, DNI, Firstname, Lastname, Gender, Email, Years_old 
+FROM persona WHERE Id=? AND Estado='1';
+
+INSERT INTO persona (Dni, Firstname, Lastname, Gender, Email, Years_old) VALUES(?,?,?,?,?,?);
+
+use registro;
+UPDATE persona set Firstname=?, 
+Lastname=?,
+Gender=?,
+Email=?, 
+years_old=?,
+where Id_persona ='?';
+
+use registro;
+UPDATE persona SET Estado='0' WHERE Id='?' 
+;
+
